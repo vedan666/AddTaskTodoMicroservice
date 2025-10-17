@@ -17,6 +17,9 @@ spec:
         image: acrdevtodoapp01.azurecr.io/todo-add-tasks-api:v1
         ports:
         - containerPort: 8000
-        env: 
+        env:
         - name: CONNECTION_STRING
-          value: ""
+          valueFrom:
+            secretKeyRef:
+              name: db-conn-secret
+              key: CONNECTION_STRING
